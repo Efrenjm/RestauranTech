@@ -25,5 +25,15 @@ This project came into existence with well-thought-out work from passionate deve
 
 # Architecture
 ## Overview
-add image
+### BackEnd
+The backend is made in Python, specially made with the Flask framework, which is going to be programmed to connect to the databases storing the appropiate information for the project.
+
+The backend is also API integrated, using APIs from Amazon, Mercado Libre, and Chedraui. This APIs help manage costs and inventory, the information is handled in JSON.
+
+### FrontEnd
+For the frontend, the templated will be sourcing from the backend to render the necessary information through the 
+developed interface using HTML and Jinja.
+
+### Database
+The database uses MySQL.
 ## ADD FRAMEWORKS USED... AND EXPLAIN EACH HTML FOR UX
