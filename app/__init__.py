@@ -1,9 +1,12 @@
-import os
 from flask import Flask
 
 def create_app():
     app = Flask(__name__)
 
-    with app.app_context():
-        from . import routes
-        return app
+    #with app.app_context():
+    #    from . import routes
+    return app
+
+app = create_app()
+
+from . import routes
