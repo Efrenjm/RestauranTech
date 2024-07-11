@@ -9,3 +9,7 @@ def home():
 @app.route('/menu')
 def menu():
     return render_template('menu.html')
+
+@app.route('/crm')
+def crm():
+    return render_template('admin.html')
