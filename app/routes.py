@@ -22,10 +22,10 @@ def register():
     form = RegisterForm()
 
     if form.is_submitted():
-        duplicate_email = User.query.filter_by(email=form.email.data).first()
-        if not duplicate_email:
+        email = form.email.data
+        if not form.validate_email(email):
+            print("not duplicate!")
             name = form.name.data
-            email = form.email.data
             hashed_password = generate_password_hash(form.password.data,
                                                     method="pbkdf2:sha256",
                                                     salt_length=8)
