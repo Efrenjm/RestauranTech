@@ -1,4 +1,5 @@
-from app import app, db
+""" User class """
+from app import db
 from datetime import date
 from flask_login import UserMixin
 
