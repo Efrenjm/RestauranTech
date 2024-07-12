@@ -16,11 +16,15 @@ class RegisterForm(FlaskForm):
     submit = SubmitField("Register")
 
     def validate_email(self, email):
-        existing_email = User.query.filter_by(email=email.data).first()
+        """ Returns True if email is already used """
+        existing_email = User.query.filter_by(email=email).first()
         if existing_email:
-            raise ValidationError("An account is already registered with specified email.")
+            return True
+        return False
         
     def validate_name(self, name):
-        existing_name = User.query.filter_by(name=name.data).first()
+        """ Returns True if name is already used """
+        existing_name = User.query.filter_by(name=name).first()
         if existing_name:
-            raise ValidationError("That name already exists.")
+            return True
+        return False
