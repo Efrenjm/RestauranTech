@@ -4,7 +4,6 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import InputRequired, Length, ValidationError
 
-
 class RegisterForm(FlaskForm):
     """ Represents registration form """
     name = StringField(validators=[InputRequired(), Length(min=4, max=64)],
@@ -28,3 +27,12 @@ class RegisterForm(FlaskForm):
         if existing_name:
             return True
         return False
+    
+
+class LoginForm(FlaskForm):
+    """ Represents login form """
+    email = StringField(validators=[InputRequired(), Length(min=4, max=128)],
+                        render_kw={"placeholder": "Email"})
+    password = PasswordField(validators=[InputRequired(), Length(min=2, max=128)],
+                             render_kw={"placeholder": "Password"})
+    submit = SubmitField("Login")
