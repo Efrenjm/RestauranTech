@@ -8,8 +8,10 @@
 <body>
     <h1>RestauranTech</h1>
     <h2>Log In</h2>
-    <input type="text" name="User">
-    <input type="text" name="Password">
-    <a href="{{ url_for('menu') }}"><p>SIGN IN</p></a>
+    <form action="" method="POST">
+        {{ form.email }}
+        {{ form.password }}
+        {{ form.submit }}
+    </form>
 </body>
 </html>
