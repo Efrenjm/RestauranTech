@@ -30,7 +30,6 @@ def register():
         new_user = User(name=name, email=email, password=hashed_password)
         db.session.add(new_user)
         db.session.commit()
-        print(new_user.id)
         return redirect(url_for('crm'))
 
     return render_template('register.html', form=form)
