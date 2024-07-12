@@ -22,14 +22,16 @@ def register():
     form = RegisterForm()
 
     if form.is_submitted():
-        name = form.name.data
-        email = form.email.data
-        hashed_password = generate_password_hash(form.password.data,
-                                                 method="pbkdf2:sha256",
-                                                 salt_length=8)
-        new_user = User(name=name, email=email, password=hashed_password)
-        db.session.add(new_user)
-        db.session.commit()
-        return redirect(url_for('crm'))
+        duplicate_email = User.query.filter_by(email=form.email.data).first()
+        if not duplicate_email:
+            name = form.name.data
+            email = form.email.data
+            hashed_password = generate_password_hash(form.password.data,
+                                                    method="pbkdf2:sha256",
+                                                    salt_length=8)
+            new_user = User(name=name, email=email, password=hashed_password)
+            db.session.add(new_user)
+            db.session.commit()
+            return redirect(url_for('crm'))
 
     return render_template('register.html', form=form)
