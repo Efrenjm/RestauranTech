@@ -1,16 +1,19 @@
+""" __init__ file that contains Flask instance """
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
 def create_app():
     app = Flask(__name__)
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqldb://test:pwd@localhost/database.db'
+    app.config['SECRET_KEY'] = 'test'
 
-    #with app.app_context():
-    #    from . import routes
+    db = SQLAlchemy(app)
+
+    with app.app_context():
+        db.create_all()
+
     return app
 
 app = create_app()
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
-app.config['SECRET_KEY'] = 'test'
-db = SQLAlchemy(app)
 
 from . import routes
