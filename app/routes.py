@@ -1,9 +1,8 @@
 """ File containing all routes for the project """
-from app import app
+from app import app, db
 from app.forms import RegisterForm
 from app.user import User
 from flask import render_template, redirect, url_for
-from uuid import uuid4
 from werkzeug.security import generate_password_hash
 
 @app.route('/menu')
@@ -29,7 +28,9 @@ def register():
                                                  method="pbkdf2:sha256",
                                                  salt_length=8)
         new_user = User(name=name, email=email, password=hashed_password)
-        new_user.id = str(uuid4)
+        db.session.add(new_user)
+        db.session.commit()
+        print(new_user.id)
         return redirect(url_for('crm'))
 
     return render_template('register.html', form=form)
