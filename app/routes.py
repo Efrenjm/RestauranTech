@@ -5,13 +5,11 @@ from app.user import User
 from flask import render_template, redirect, url_for, session
 from werkzeug.security import generate_password_hash, check_password_hash
 
-@app.route('/menu')
-def menu():
-    return render_template('index.html')
 
 @app.route('/crm')
 def crm():
     return render_template('admin.html')
+
 
 @app.route('/login', methods=["GET", "POST"])
 def login():
@@ -35,6 +33,7 @@ def login():
             return redirect(url_for("crm"))
 
     return render_template('login.html', form=form)
+
 
 @app.route('/register', methods=["GET", "POST"])
 def register():
