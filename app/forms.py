@@ -14,7 +14,7 @@ class RegisterForm(FlaskForm):
                              render_kw={"placeholder": "Password"})
     submit = SubmitField("Register")
 
-    def validate_email(self, email):
+    def duplicate_email(self, email):
         """ Returns True if email is already used """
         existing_email = User.query.filter_by(email=email).first()
         if existing_email:

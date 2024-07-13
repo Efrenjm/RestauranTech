@@ -41,7 +41,7 @@ def register():
 
     if form.is_submitted():
         email = form.email.data
-        if not form.validate_email(email):
+        if not form.duplicate_email(email):
             name = form.name.data
             hashed_password = generate_password_hash(form.password.data,
                                                     method="pbkdf2:sha256",
