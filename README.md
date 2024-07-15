@@ -24,15 +24,14 @@ This project came into existence with well-thought-out work from passionate deve
 # Known bugs
 
 # Architecture
-## Overview
-### BackEnd
-The backend is made in Python, specially made with the Flask framework, which is going to be programmed to connect to the databases storing the appropiate information for the project.
-
-The backend is also API integrated, using APIs from Amazon, Mercado Libre, and Chedraui. This APIs help manage costs and inventory, the information is handled in JSON.
-
-### FrontEnd
-For the frontend, the templated will be sourcing from the backend to render the necessary information through the 
-developed interface using HTML and Jinja.
+## Flask
+For the web development part, we used the Flask framework to develop the web application.
+## Wtforms
+For the login forms and registration forms, using Wtforms was an optimal solution to capture information the user types in.
+## werkzeug
+To hash the password we used the werkzeug.security module, and implemented password salting.
+## SQLAlchemy
+For database management, SQLAlchemy is our best choice to manipulate SQL databases using Python language.
 
 ### Database
 The database uses MySQL.
