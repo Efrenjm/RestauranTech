@@ -1,5 +1,5 @@
 """ Contains form for login and register """
-from app.user import User
+from app.models.user import User
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import InputRequired, Length, ValidationError

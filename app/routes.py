@@ -1,7 +1,7 @@
 """ File containing all routes for the project """
 from app import app, db
 from app.forms import RegisterForm, LoginForm
-from app.user import User
+from app.models.user import User
 from flask import render_template, redirect, url_for, session
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -29,7 +29,7 @@ def login():
             return redirect(url_for("login"))
         
         else:
-            session["iduser"] = user.id
+            session["iduser"] = user.user_id
             return redirect(url_for("crm"))
 
     return render_template('login.html', form=form)
