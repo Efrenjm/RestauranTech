@@ -10,7 +10,8 @@ class Branch(db.Model, UserMixin):
     fiscal_address = db.Column(db.String(256), nullable=False)
 
     company_id = db.Column(db.Integer, db.ForeignKey('company.company_id'))
+    
     company = db.relationship('Company', back_populates='branch')
-
     user_to_branch = db.relationship('User_to_branch', back_populates='branch')
     inventory = db.relationship('Inventory', back_populates='branch')
+    order = db.relationship('Order', back_populates='branch')

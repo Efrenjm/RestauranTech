@@ -13,3 +13,4 @@ class Footprint(db.Model, UserMixin):
     asset_id = db.Column(db.Integer, db.ForeignKey('assets.asset_id'))
 
     assets = db.relationship('Assets', back_populates='footprint')
+    order_details = db.relationship('Order_details', back_populates='footprint')

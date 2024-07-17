@@ -12,7 +12,7 @@ class Order(db.Model, UserMixin):
 
     branch_id = db.Column(db.Integer, db.ForeignKey('branch.branch_id'))
     user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'))
-    supplier_id = db.Column(db.Integer, db.ForeignKey('Supplier.supplier_id'))
+    supplier_id = db.Column(db.Integer, db.ForeignKey('__supplier.supplier_id'))
 
     branch = db.relationship('Branch', back_populates='order')
     user = db.relationship('User', back_populates='order')
