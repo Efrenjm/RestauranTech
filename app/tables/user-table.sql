@@ -2,7 +2,7 @@ USE `RestauranTech`;
 
 CREATE TABLE IF NOT EXISTS `user` (
     `user_id` INT AUTO_INCREMENT,
-    `company_id` INT NOT NULL,
+    `company_id` INT,
     `name` VARCHAR(128) NOT NULL,
     `email` VARCHAR(128) NOT NULL UNIQUE,
     `password` VARCHAR(128) NOT NULL,
