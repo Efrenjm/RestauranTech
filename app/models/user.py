@@ -10,7 +10,6 @@ class User(db.Model, UserMixin):
     name = db.Column(db.String(128), nullable=False)
     email = db.Column(db.String(128), nullable=False, unique=True)
     password = db.Column(db.String(128), nullable=False)
-    created_at = db.Column(db.Date, default=date.today)
     profile_picture = db.Column(db.String(2048), default=None)
     
     company_id = db.Column(db.Integer, db.ForeignKey('company.company_id'))
