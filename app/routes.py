@@ -1,10 +1,16 @@
 """ File containing all routes for the project """
-from app import app, db
+from app import app, db, login_manager
 from app.forms import RegisterForm, LoginForm
 from app.models.user import User
 from flask import render_template, redirect, url_for, session
+from flask_login import login_user, logout_user
 from werkzeug.security import generate_password_hash, check_password_hash
 
+@login_manager.user_loader
+def load_user(user_id):
+    user = User.query.filter_by(user_id=user_id).first()
+    if user:
+        return user.user_id
 
 @app.route('/')
 def home():
@@ -35,6 +41,7 @@ def login():
         
         else:
             session["iduser"] = user.user_id
+            load_user(user.user_id)
             return redirect(url_for("crm"))
 
     return render_template('login.html', form=form)
@@ -57,3 +64,8 @@ def register():
             return redirect(url_for('crm'))
 
     return render_template('register.html', form=form)
+
+@app.route("/logout")
+def logout():
+    logout_user()
+    return redirect(url_for("home"))
