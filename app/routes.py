@@ -3,7 +3,7 @@ from app import app, db, login_manager
 from app.forms import RegisterForm, LoginForm
 from app.models.user import User
 from flask import render_template, redirect, url_for, session
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_user, logout_user, login_required, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 
 @login_manager.user_loader
@@ -12,7 +12,8 @@ def load_user(user_id):
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('index.html',
+                           logged_in=current_user.is_authenticated)
 
 
 @app.route('/crm')
