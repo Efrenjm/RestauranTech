@@ -3,14 +3,12 @@ from app import app, db, login_manager
 from app.forms import RegisterForm, LoginForm
 from app.models.user import User
 from flask import render_template, redirect, url_for, session
-from flask_login import login_user, logout_user
+from flask_login import login_user, logout_user, login_required
 from werkzeug.security import generate_password_hash, check_password_hash
 
 @login_manager.user_loader
 def load_user(user_id):
-    user = User.query.filter_by(user_id=user_id).first()
-    if user:
-        return user.user_id
+    return User.query.get(int(user_id))
 
 @app.route('/')
 def home():
@@ -18,6 +16,7 @@ def home():
 
 
 @app.route('/crm')
+@login_required
 def crm():
     return render_template('admin.html')
 
@@ -40,8 +39,7 @@ def login():
             return redirect(url_for("login"))
         
         else:
-            session["iduser"] = user.user_id
-            load_user(user.user_id)
+            login_user(user)
             return redirect(url_for("crm"))
 
     return render_template('login.html', form=form)
@@ -61,9 +59,11 @@ def register():
             new_user = User(name=name, email=email, password=hashed_password)
             db.session.add(new_user)
             db.session.commit()
+            login_user(new_user)
             return redirect(url_for('crm'))
 
     return render_template('register.html', form=form)
+
 
 @app.route("/logout")
 def logout():
