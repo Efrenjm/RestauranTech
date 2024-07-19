@@ -17,3 +17,6 @@ class User(db.Model, UserMixin):
     company = db.relationship('Company', back_populates='user')
     user_to_branch = db.relationship('User_to_branch', back_populates='user')
     order = db.relationship('Order', back_populates='user')
+
+    def get_id(self):
+        return str(self.user_id)
