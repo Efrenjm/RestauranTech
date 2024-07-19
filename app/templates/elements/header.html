@@ -14,11 +14,11 @@
 
     <div class="col-md-3 text-end px-2">
         {% if not logged_in %}
-        <button type="button" class="btn btn-outline-primary me-2" onclick="window.location.href='{{ url_for('login') }}'">Login</button>
-        <button type="button" class="btn btn-primary" onclick="window.location.href='{{ url_for('register') }}'">Sign-up</button>
+        <a href="{{ url_for('login') }}" class="btn btn-outline-primary me-2" role="button">Log In</a>
+        <a href="{{ url_for('register') }}" class="btn btn-primary" role="button">Sign Up</a>
         {% else %}
-        <button type="button" class="btn btn-outline-primary me-2" onclick="window.location.href='{{ url_for('crm') }}'">Admin Panel</button>
-        <button type="button" class="btn btn-outline-primary me-2" onclick="window.location.href='{{ url_for('logout') }}'">Logout</button>
+        <a href="{{ url_for('crm') }}" class="btn btn-outline-primary me-2" role="button">Admin Panel</a>
+        <a href="{{ url_for('logout') }}" class="btn btn-primary" role="button">Log Out</a>
         {% endif %}
     </div>
 </header>
