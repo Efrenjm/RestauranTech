@@ -10,7 +10,6 @@ class User(db.Model, UserMixin):
     name = db.Column(db.String(128), nullable=False)
     email = db.Column(db.String(128), nullable=False, unique=True)
     password = db.Column(db.String(128), nullable=False)
-    created_at = db.Column(db.Date, default=date.today)
     profile_picture = db.Column(db.String(2048), default=None)
     
     company_id = db.Column(db.Integer, db.ForeignKey('company.company_id'))
@@ -18,3 +17,6 @@ class User(db.Model, UserMixin):
     company = db.relationship('Company', back_populates='user')
     user_to_branch = db.relationship('User_to_branch', back_populates='user')
     order = db.relationship('Order', back_populates='user')
+
+    def get_id(self):
+        return str(self.user_id)

@@ -13,7 +13,12 @@
     </ul>
 
     <div class="col-md-3 text-end px-2">
-        <button type="button" class="btn btn-outline-primary me-2" onclick="window.location.href='{{ url_for('login') }}'">Login</button>
-        <button type="button" class="btn btn-primary" onclick="window.location.href='{{ url_for('register') }}'">Sign-up</button>
+        {% if not logged_in %}
+        <a href="{{ url_for('login') }}" class="btn btn-outline-primary me-2" role="button">Log In</a>
+        <a href="{{ url_for('register') }}" class="btn btn-primary" role="button">Sign Up</a>
+        {% else %}
+        <a href="{{ url_for('crm') }}" class="btn btn-outline-primary me-2" role="button">Admin Panel</a>
+        <a href="{{ url_for('logout') }}" class="btn btn-primary" role="button">Log Out</a>
+        {% endif %}
     </div>
 </header>

@@ -27,14 +27,15 @@
                     </div>
                     <div class="header-block header-block-nav">
                         <ul class="nav-profile">
-                    		<li class="notifications"><a href="#" id="logout" title="Return to Customer Panel"><span class="fa fa-sign-out"></span> Salir</a></li>
+                            <li class="notifications"><a href="{{ url_for('home') }}" title="Return to Customer Panel"><span class="fa fa-sign-out"></span>Inicio</a></li>
+                    		<li class="notifications"><a href="{{ url_for('logout') }}" id="logout" title="Return to Customer Panel"><span class="fa fa-sign-out"></span>Salir</a></li>
                         </ul>
                     </div>
                 </header>
                 <aside class="sidebar">
                     <div class="sidebar-container">
                         <div class="sidebar-header">
-                            <div class="brand" style="background:#FFF"><div class="logo"><img src="images/logo.png"  style="position:relative; margin-left: -15px; max-width: 150px;"></div></div>
+                            <div class="brand" style="background:#FFF"><div class="logo"><img src="static/images/logo.png"  style="position:relative; margin-left: -15px; max-width: 150px;"></div></div>
                         </div>
                         <nav class="menu">
                             <ul class="nav metismenu" id="sidebar-menu">

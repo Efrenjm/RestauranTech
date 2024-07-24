@@ -1,5 +1,6 @@
 """ __init__ file that contains Flask instance """
 from flask import Flask
+from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv
 import os
@@ -22,5 +23,7 @@ def create_app():
 
 app = create_app()
 db = SQLAlchemy(app)
+login_manager = LoginManager()
+login_manager.init_app(app)
 
 from . import routes
