@@ -1,7 +1,8 @@
 """ File containing all routes for the project """
 from app import app, db, login_manager
-from app.forms import RegisterForm, LoginForm
+from app.forms import RegisterForm, LoginForm, InventoryForm
 from app.models.user import User
+from app.models.inventory import Inventory
 from flask import render_template, redirect, url_for, session
 from flask_login import login_user, logout_user, login_required, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -70,3 +71,27 @@ def register():
 def logout():
     logout_user()
     return redirect(url_for("home"))
+
+
+@app.route('/inventory', methods=["GET", "POST"])
+def inventory():
+    form = InventoryForm()
+
+    if form.is_submitted():
+        branch_id = form.branch_id.data
+        asset_id = form.asset_id.data
+        quantity_in_stock = form.quantity_in_stock.data
+        unit_of_measure = form.unit_of_measure.data
+        average_price = form.average_price.data
+        shelf_life = form.shelf_life.data
+        shelf_life_unit = form.shelf_life_unit.data
+
+        new_item = Inventory(branch_id=branch_id, asset_id=asset_id,
+                             quantity_in_stock=quantity_in_stock, unit_of_measure=unit_of_measure,
+                             average_price=average_price, shelf_life=shelf_life,
+                             shelf_life_unit=shelf_life_unit)
+        db.session.add(new_item)
+        db.session.commit()
+        print("item added successfully!")
+
+    return render_template('inventory.html', form=form)
