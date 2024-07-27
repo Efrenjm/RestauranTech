@@ -20,7 +20,10 @@ def home():
 @app.route('/crm')
 @login_required
 def crm():
-    return render_template('admin.html')
+    user_info = {
+        'id': current_user.user_id
+    }
+    return render_template('admin.html', user_info=user_info)
 
 
 @app.route('/login', methods=["GET", "POST"])

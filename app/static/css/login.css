@@ -1,0 +1,98 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box; }
+body{
+    margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+}
+.cntLogin{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 100vh;
+}
+.itemLogin1{
+    width: 60%;
+    height: 100%;
+    background: url('../images/banner1.webp') center no-repeat;
+    background-size: cover;
+}
+.itemLogin2{
+    width: 40%;
+    padding-left: 50px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.login1{
+    background: #323232;
+    border-radius: 20px;
+    padding: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    width: 300px;
+}
+.itemLogin2 h1{
+    font-family: 'Arial', sans-serif;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 1;
+    color: #00A6B0;
+    text-align: center;
+}
+.itemLogin2 h2{
+    font-family: 'Arial', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1;
+    color: #9BDFE1;
+    text-align: center;
+}
+.itemLogin2 input[type=text],.itemLogin2 input[type=password]{
+	display: block;
+	height: 45px;
+    width: 100%;
+	font-family: 'Verdana', sans-serif;
+	font-size: 12px;
+	font-weight: 400;
+	padding-left: 18px;
+	letter-spacing: 0.25px;
+	color: #959595;
+	background: #fff;
+	position: relative;
+    border:0;
+}
+.itemLogin2 input[type=text]{
+    margin-bottom: 8px;
+}
+.itemLogin2 input[type=submit],
+.itemLogin2 input[type=reset],.itemLogin2 a{
+	display:inline-block; 
+	height:42px; 
+	background: #25D4D5; 
+	color:#ffffff; 
+	text-transform:uppercase; 
+	font-family:'Arial', sans-serif; 
+	font-size: 17px;
+	font-weight: 700;
+	letter-spacing: 0px;
+	width: 100%;
+	text-align: center;
+	border-radius: 5px;
+    border:0;
+	margin-top: 20px;
+}
+.itemLogin2 input[type=submit]:hover,
+.itemLogin2 input[type=reset]:hover{opacity:.8}
+.itemLogin2 a{
+    line-height: 42px;
+    text-align: center;
+    text-decoration: none;
+    background: #ADCFD1;
+}
