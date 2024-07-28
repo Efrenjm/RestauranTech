@@ -1,8 +1,23 @@
 {% extends 'elements/app_base.html' %} {% block title %}Register{% endblock %}
 {% block content %}
-<h1>RestauranTech</h1>
-<h2>Register</h2>
-<form action="" method="POST">
-  {{ form.name }} {{ form.email }} {{ form.password }} {{ form.submit }}
-</form>
+  <div class="cntLogin">
+        <div class="itemLogin1"></div>
+        <div class="itemLogin2">
+            <div class="login1">
+                <h1>RestauranTech</h1>
+                <h2>Register</h2>
+                <form action="" method="POST">
+                    <div>{{ form.name }}</div>
+                    <div>{{ form.email }}</div>
+                    <div>{{ form.password }}</div>
+                    <div>
+                        {{ form.submit }}
+                    </div>
+                    <div>
+                        <a href="{{ url_for('login') }}" class="btn btn-primary" role="button">Log In</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 {% endblock %}
